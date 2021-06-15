@@ -3,18 +3,16 @@ import { returnError } from "../helpers/returnError";
 const Aflr = require("aflr").default;
 
 const { Voice } = Aflr;
+const apiKey = process.env.APIKEY;
 
 export const handler = async (event) => {
-  const apiKey = process.env.APIKEY;
-
+  console.log(apiKey);
   const parsedBody = JSON.parse(event?.body);
-
-  const filters = parsedBody?.filters;
 
   const debug = parsedBody?.debug || false;
 
   //configure aflr package
-  if (Aflr.isInitialized) {
+  if (Aflr.isInitialized()) {
     Aflr.reset();
   }
   try {
