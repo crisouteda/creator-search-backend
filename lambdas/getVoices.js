@@ -6,9 +6,11 @@ const { Voice } = Aflr;
 const apiKey = process.env.APIKEY;
 
 export const handler = async (event) => {
-  const filters = JSON.parse(event?.body);
+  const parsedBody = JSON.parse(event?.body);
 
-  const debug = filters?.debug || false;
+  const filters = parsedBody?.filters;
+
+  const debug = parsedBody?.debug || false;
 
   //configure aflr package
   if (Aflr.isInitialized()) {
