@@ -6,7 +6,6 @@ const { Voice } = Aflr;
 const apiKey = process.env.APIKEY;
 
 export const handler = async (event) => {
-  console.log(apiKey);
   const filters = JSON.parse(event?.body);
 
   const debug = filters?.debug || false;
