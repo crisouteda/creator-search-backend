@@ -1,5 +1,5 @@
-service: voice-page
-app: speakers
+service: content-search
+app: content-search
 org: aflorithmic
 frameworkVersion: "2"
 
