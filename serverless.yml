@@ -17,12 +17,12 @@ plugins:
   - serverless-bundle
 
 functions:
-  getParameters:
-    handler: lambdas/getParameters.handler
+  getVoiceParameters:
+    handler: lambdas/getVoiceParameters.handler
     timeout: 30
     events:
       - http:
-          path: /getParameters
+          path: /getVoiceParameters
           method: get
           cors: true
   getVoices:
@@ -31,5 +31,21 @@ functions:
     events:
       - http:
           path: /getVoices
+          method: post
+          cors: true
+  getTemplateParameters:
+    handler: lambdas/getTemplateParameters.handler
+    timeout: 30
+    events:
+      - http:
+          path: /getTemplateParameters
+          method: get
+          cors: true
+  getTemplates:
+    handler: lambdas/getTemplates.handler
+    timeout: 30
+    events:
+      - http:
+          path: /getTemplates
           method: post
           cors: true
