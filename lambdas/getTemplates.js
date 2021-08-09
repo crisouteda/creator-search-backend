@@ -2,7 +2,7 @@ import { returnError } from "../helpers/returnError";
 
 const apiaudio = require("apiaudio").default;
 
-const { Voice } = apiaudio;
+const { Sound } = apiaudio;
 const apiKey = process.env.APIKEY;
 
 export const handler = async (event) => {
@@ -13,7 +13,7 @@ export const handler = async (event) => {
   const debug = parsedBody?.debug || false;
 
   //configure aflr package
-  if (apiaudio.isInitialized()) {
+  if (apiaudio.isInitialized) {
     apiaudio.reset();
   }
   try {
@@ -29,19 +29,19 @@ export const handler = async (event) => {
     });
   }
 
-  let voices;
+  let templates;
   try {
     console.log(Object.keys(filters).length);
     if (Object.keys(filters).length !== 0) {
-      voices = await Voice.list(filters);
+      templates = await Sound.list(filters);
     } else {
-      voices = await Voice.list();
+      templates = await Sound.list();
     }
   } catch (e) {
     console.log(e);
     return returnError({
       statusCode: 500,
-      message: "Problem retrieving the voices.",
+      message: "Problem retrieving the sound templates.",
     });
   }
 
@@ -52,6 +52,6 @@ export const handler = async (event) => {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Credentials": true,
     },
-    body: JSON.stringify(voices),
+    body: JSON.stringify(templates),
   };
 };
