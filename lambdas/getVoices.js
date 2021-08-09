@@ -1,23 +1,23 @@
 import { returnError } from "../helpers/returnError";
 
-const Aflr = require("aflr").default;
+const apiaudio = require("apiaudio").default;
 
-const { Voice } = Aflr;
+const { Voice } = apiaudio;
 const apiKey = process.env.APIKEY;
 
 export const handler = async (event) => {
   const parsedBody = JSON.parse(event?.body);
 
-  const filters = parsedBody?.filters;
+  const filters = parsedBody?.filters || {};
 
   const debug = parsedBody?.debug || false;
 
   //configure aflr package
-  if (Aflr.isInitialized()) {
-    Aflr.reset();
+  if (apiaudio.isInitialized()) {
+    apiaudio.reset();
   }
   try {
-    Aflr.configure({
+    apiaudio.configure({
       apiKey,
       debug,
     });
