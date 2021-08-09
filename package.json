@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aflr": "^0.3.6",
-    "dotenv": "^9.0.2"
+    "apiaudio": "^0.5.3",
+    "dotenv": "^9.0.2",
+    "serverless-bundle": "^4.4.0"
   }
 }
