@@ -1,8 +1,8 @@
 import { returnError } from "../helpers/returnError";
 
-const Aflr = require("aflr").default;
+const apiaudio = require("apiaudio").default;
 
-const { Voice } = Aflr;
+const { Voice } = apiaudio;
 const apiKey = process.env.APIKEY;
 
 export const handler = async (event) => {
@@ -11,11 +11,11 @@ export const handler = async (event) => {
   const debug = queryStringParameters?.debug || false;
 
   //configure aflr package
-  if (Aflr.isInitialized()) {
-    Aflr.reset();
+  if (apiaudio.isInitialized) {
+    apiaudio.reset();
   }
   try {
-    Aflr.configure({
+    apiaudio.configure({
       apiKey,
       debug,
     });
